@@ -12,5 +12,19 @@ query Page($slug: String!) {
         url
       }
     }
+    cards {
+      button {
+        url
+        variant
+        text
+      }
+      image {
+        url
+      }
+      listItems
+      texto
+      titulo
+      icon
+    }
   }
 }
