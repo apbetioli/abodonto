@@ -1,19 +1,11 @@
+import CardComponent from '@/components/card';
 import Hero from '@/components/hero';
-import LazyLoaderObserver from '@/components/ui/LazyLoadObserver';
 import { Button } from '@/components/ui/button';
+import { CardContent } from '@/gql/graphql';
 import client from '@/graphql/client';
 import { Pagina } from '@/graphql/gql/graphql';
 import pageQuery from '@/graphql/queries/page.graphql';
-import {
-  Clock,
-  DrillIcon,
-  Scissors,
-  Shield,
-  Smile,
-  Sparkles,
-  Star,
-} from 'lucide-react';
-import Image from 'next/image';
+import { Clock, Shield, Star } from 'lucide-react';
 import Link from 'next/link';
 
 export default async function HomePage() {
@@ -23,11 +15,13 @@ export default async function HomePage() {
       slug: 'home',
     },
   });
-  const { hero } = data.pagina;
+
+  const { hero, cards } = data.pagina;
 
   return (
     <main className="flex-1">
       {hero && <Hero hero={hero} />}
+
       <section
         id="servicos"
         className="w-full py-12 md:py-24 lg:py-32 bg-black"
@@ -46,186 +40,12 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-      <section className="w-full py-12 md:py-24 lg:py-32 text-[#be955f]">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid gap-6 md:grid-cols-2 md:gap-12 items-center justify-items-center">
-            <Image
-              alt="Procedimento de implante dentário"
-              className="rounded-xl w-full aspect-square object-cover"
-              height="400"
-              src="/implantes.jpg"
-              width="400"
-            />
-            <LazyLoaderObserver>
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <DrillIcon className="w-4 h-4 text-[#be955f]" />
-                    <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
-                      Implantes
-                    </h3>
-                  </div>
-                  <p className="text-gray-400">
-                    Restaure seu sorriso com nossas soluções avançadas de
-                    implantes dentários. Nossos implantes oferecem uma
-                    substituição permanente e natural para dentes ausentes,
-                    melhorando tanto a função quanto a estética.
-                  </p>
-                </div>
-                <ul className="space-y-2 text-gray-400">
-                  <li>• Solução duradoura e resistente</li>
-                  <li>• Preserva a saúde do osso maxilar</li>
-                  <li>• Melhora a fala e a capacidade de mastigação</li>
-                  <li>• Aprimora a estrutura facial</li>
-                </ul>
-                <Link
-                  href="https://wa.me/5544997381613?text=Olá, gostaria de saber mais sobre implantes"
-                  className="flex justify-center sm:justify-start"
-                >
-                  <Button className="w-full sm:w-fit max-w-sm">
-                    Saiba Mais Sobre Implantes
-                  </Button>
-                </Link>
-              </div>
-            </LazyLoaderObserver>
-          </div>
-        </div>
-      </section>
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid gap-6 md:grid-cols-2 md:gap-12 items-center justify-items-center">
-            <LazyLoaderObserver>
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <Smile className="w-4 h-4 text-[#be955f]" />
-                    <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
-                      Facetas
-                    </h3>
-                  </div>
-                  <p className="text-gray-600">
-                    Transforme seu sorriso com nossas facetas de porcelana
-                    personalizadas. Projetadas para melhorar a aparência dos
-                    seus dentes, nossas facetas aumentam sua confiança e
-                    proporcionam um sorriso digno de Hollywood.
-                  </p>
-                </div>
-                <ul className="space-y-2 text-gray-600">
-                  <li>• Corrige descoloração, lascas e desalinhamentos</li>
-                  <li>• Procedimento minimamente invasivo</li>
-                  <li>• Resultados com aparência natural</li>
-                  <li>• Resistente a manchas e duradouro</li>
-                </ul>
-                <Link
-                  href="https://wa.me/5544997381613?text=Olá, gostaria de saber mais sobre facetas"
-                  className="flex justify-center sm:justify-start"
-                >
-                  <Button className="w-full sm:w-fit max-w-sm">
-                    Descubra as Facetas
-                  </Button>
-                </Link>
-              </div>
-            </LazyLoaderObserver>
-            <Image
-              alt="Antes e depois de facetas dentárias"
-              className="rounded-xl w-full aspect-square object-cover order-first md:order-last"
-              height="400"
-              src="/faceta.jpg"
-              width="400"
-            />
-          </div>
-        </div>
-      </section>
-      <section className="w-full py-12 md:py-24 lg:py-32 text-[#be955f]">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid gap-6  md:grid-cols-2 md:gap-12 items-center justify-items-center">
-            <Image
-              alt="Procedimento de clareamento dental"
-              className="rounded-xl w-full aspect-square object-cover"
-              height="400"
-              src="/clareamento.jpg"
-              width="400"
-            />
-            <LazyLoaderObserver>
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <Sparkles className="w-4 h-4 text-[#be955f]" />
-                    <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
-                      Clareamento
-                    </h3>
-                  </div>
-                  <p className="text-gray-400">
-                    Ilumine seu sorriso com nossos tratamentos profissionais de
-                    clareamento dental. Nossos serviços de clareamento removem
-                    manchas e descoloração, proporcionando um sorriso branco e
-                    deslumbrante que ilumina o ambiente.
-                  </p>
-                </div>
-                <ul className="space-y-2 text-gray-400">
-                  <li>• Resultados rápidos e eficazes</li>
-                  <li>• Procedimento seguro e confortável</li>
-                  <li>• Planos de tratamento personalizados</li>
-                  <li>• Efeitos duradouros com cuidados adequados</li>
-                </ul>
-                <Link
-                  href="https://wa.me/5544997381613?text=Olá, gostaria de saber mais sobre clareamento dental"
-                  className="flex justify-center sm:justify-start"
-                >
-                  <Button className="w-full sm:w-fit max-w-sm">
-                    Explore o Clareamento Dental
-                  </Button>
-                </Link>
-              </div>
-            </LazyLoaderObserver>
-          </div>
-        </div>
-      </section>
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid gap-6 md:grid-cols-2 md:gap-12 items-center justify-items-center">
-            <LazyLoaderObserver>
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <Scissors className="w-4 h-4 text-[#be955f]" />
-                    <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
-                      Gengivoplastia
-                    </h3>
-                  </div>
-                  <p className="text-gray-600">
-                    Aprimore a linha da sua gengiva com nossos procedimentos de
-                    contorno gengival. A gengivoplastia melhora a estética do
-                    seu sorriso e promove uma melhor saúde bucal, remodelando e
-                    esculpindo suas gengivas.
-                  </p>
-                </div>
-                <ul className="space-y-2 text-gray-600">
-                  <li>• Corrige linhas gengivais irregulares</li>
-                  <li>• Reduz a exposição excessiva da gengiva</li>
-                  <li>• Melhora a estética geral do sorriso</li>
-                  <li>• Técnica minimamente invasiva</li>
-                </ul>
-                <Link
-                  href="https://wa.me/5544997381613?text=Olá, gostaria de saber mais sobre gengivoplastia"
-                  className="flex justify-center sm:justify-start"
-                >
-                  <Button className="w-full sm:w-fit max-w-sm">
-                    Conheça a Gengivoplastia
-                  </Button>
-                </Link>
-              </div>
-            </LazyLoaderObserver>
-            <Image
-              alt="Procedimento de gengivoplastia"
-              className="rounded-xl w-full aspect-square object-cover order-first md:order-last"
-              width="400"
-              height="400"
-              src="/gengivoplastia.jpg"
-            />
-          </div>
-        </div>
-      </section>
+
+      {cards &&
+        cards.map((card: CardContent) => (
+          <CardComponent key={card.titulo} card={card} />
+        ))}
+
       <section
         id="sobre"
         className="w-full py-12 md:py-24 lg:py-32 bg-black text-[#be955f]"
@@ -276,6 +96,7 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
       <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -318,6 +139,7 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
       <section
         id="contato"
         className="w-full py-12 md:py-24 lg:py-32 bg-black text-[#be955f]"
