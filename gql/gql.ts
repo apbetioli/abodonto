@@ -14,7 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "query Menus {\n  menus(first: 1) {\n    logo {\n      url\n      width\n      height\n    }\n    links {\n      texto\n      url\n    }\n  }\n}": types.MenusDocument,
-    "query Page($slug: String!) {\n  pagina(where: {slug: $slug}) {\n    hero {\n      title\n      text\n      buttons {\n        text\n        url\n        variant\n      }\n      video {\n        url\n      }\n    }\n  }\n}": types.PageDocument,
+    "query Page($slug: String!) {\n  pagina(where: {slug: $slug}) {\n    hero {\n      title\n      text\n      buttons {\n        text\n        url\n        variant\n      }\n      video {\n        url\n      }\n    }\n    cards {\n      button {\n        url\n        variant\n        text\n      }\n      image {\n        url\n      }\n      listItems\n      texto\n      titulo\n      icon\n    }\n  }\n}": types.PageDocument,
     "query TextPage($slug: String!) {\n  textPage(where: {slug: $slug}) {\n    text {\n      html\n    }\n  }\n}": types.TextPageDocument,
 };
 
@@ -39,7 +39,7 @@ export function graphql(source: "query Menus {\n  menus(first: 1) {\n    logo {\
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query Page($slug: String!) {\n  pagina(where: {slug: $slug}) {\n    hero {\n      title\n      text\n      buttons {\n        text\n        url\n        variant\n      }\n      video {\n        url\n      }\n    }\n  }\n}"): (typeof documents)["query Page($slug: String!) {\n  pagina(where: {slug: $slug}) {\n    hero {\n      title\n      text\n      buttons {\n        text\n        url\n        variant\n      }\n      video {\n        url\n      }\n    }\n  }\n}"];
+export function graphql(source: "query Page($slug: String!) {\n  pagina(where: {slug: $slug}) {\n    hero {\n      title\n      text\n      buttons {\n        text\n        url\n        variant\n      }\n      video {\n        url\n      }\n    }\n    cards {\n      button {\n        url\n        variant\n        text\n      }\n      image {\n        url\n      }\n      listItems\n      texto\n      titulo\n      icon\n    }\n  }\n}"): (typeof documents)["query Page($slug: String!) {\n  pagina(where: {slug: $slug}) {\n    hero {\n      title\n      text\n      buttons {\n        text\n        url\n        variant\n      }\n      video {\n        url\n      }\n    }\n    cards {\n      button {\n        url\n        variant\n        text\n      }\n      image {\n        url\n      }\n      listItems\n      texto\n      titulo\n      icon\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
