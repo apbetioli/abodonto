@@ -1,11 +1,11 @@
-import { CardContent, Icons } from '@/gql/graphql';
+import { Card, Icons } from '@/graphql/gql/graphql';
 import LazyLoaderObserver from './ui/LazyLoadObserver';
 import Image from 'next/image';
 import Link from 'next/link';
 import { DrillIcon, Scissors, Smile, Sparkles } from 'lucide-react';
 import { Button } from './ui/button';
 
-export default function CardComponent({ card }: { card: CardContent }) {
+export default function CardComponent({ card }: { card: Card }) {
   const icons = {
     [Icons.DrillIcon]: DrillIcon,
     [Icons.Scissors]: Scissors,
@@ -34,26 +34,28 @@ export default function CardComponent({ card }: { card: CardContent }) {
                     <IconComponent className="w-6 h-6 text-[#be955f]" />
                   )}
                   <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
-                    {card.titulo}
+                    {card.title}
                   </h3>
                 </div>
-                <p className="text-gray-400">{card.texto}</p>
+                <p className="text-gray-400">{card.text}</p>
               </div>
               <ul className="space-y-2 text-gray-400 list-disc pl-4">
-                {card.listItems.map((item, index) => (
-                  <li key={index}>{item}</li>
+                {card.listItems.map((item) => (
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
               <Link
                 href="https://wa.me/5544997381613?text=Olá, gostaria de saber mais sobre implantes"
                 className="flex justify-center sm:justify-start"
               >
-                <Button
-                  className="w-full sm:w-fit max-w-sm"
-                  variant={card.button.variant}
-                >
-                  {card.button.text}
-                </Button>
+                {card.button && (
+                  <Button
+                    className="w-full sm:w-fit max-w-sm"
+                    variant={card.button.variant}
+                  >
+                    {card.button.text}
+                  </Button>
+                )}
               </Link>
             </div>
           </LazyLoaderObserver>

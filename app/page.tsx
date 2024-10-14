@@ -1,12 +1,12 @@
-import CardComponent from '@/components/card';
 import Hero from '@/components/hero';
+import { Card } from '@/graphql/gql/graphql';
 import { Button } from '@/components/ui/button';
-import { CardContent } from '@/gql/graphql';
 import client from '@/graphql/client';
 import { Pagina } from '@/graphql/gql/graphql';
 import pageQuery from '@/graphql/queries/page.graphql';
 import { Clock, Shield, Star } from 'lucide-react';
 import Link from 'next/link';
+import CardComponent from '@/components/card';
 
 export default async function HomePage() {
   const { data } = await client.query<{ pagina: Pagina }>({
@@ -42,8 +42,8 @@ export default async function HomePage() {
       </section>
 
       {cards &&
-        cards.map((card: CardContent) => (
-          <CardComponent key={card.titulo} card={card} />
+        cards.map((card: Card) => (
+          <CardComponent key={card.title} card={card} />
         ))}
 
       <section

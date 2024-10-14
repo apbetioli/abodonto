@@ -5,7 +5,7 @@ const config: CodegenConfig = {
   schema: process.env.GRAPHQL_CONTENT_ENDPOINT,
   documents: 'graphql/queries/*.graphql',
   generates: {
-    'gql/': {
+    'graphql/gql/': {
       preset: 'client',
       plugins: [],
     },
