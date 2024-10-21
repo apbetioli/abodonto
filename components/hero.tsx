@@ -1,12 +1,13 @@
 import { Hero } from '@/graphql/gql/graphql';
 import Link from 'next/link';
 import { Button } from './ui/Button';
+import Image from 'next/image';
 
 export default function HeroComponent({ hero }: { hero: Hero }) {
   return (
     <section className="relative w-full h-screen flex items-end justify-center text-white">
       <video
-        className="h-full w-full object-cover"
+        className="hidden sm:block h-full w-full object-cover"
         src={hero.video.url}
         aria-label={
           hero.video.altText
@@ -17,6 +18,13 @@ export default function HeroComponent({ hero }: { hero: Hero }) {
         loop
         muted
       ></video>
+      <Image
+        className="block sm:hidden h-full w-full pt-14 object-cover"
+        src={'/ander.jpg'}
+        alt={'Dr. Anderson Betioli smiling'}
+        width={1440}
+        height={1590}
+      />
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black via-gray-50/5"></div>
       <div className="absolute flex flex-col justify-center space-y-4 items-center text-center pb-12 xl:pb-32 px-4 md:px-6">
         <div className="space-y-2 text-center">
