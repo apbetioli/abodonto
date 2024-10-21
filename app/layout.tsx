@@ -45,7 +45,11 @@ export default async function RootLayout({
               {menu.logo && (
                 <Image
                   src={menu.logo.url || '/logo2.jpg'}
-                  alt="Anderson Betioli Odontologia Avançada"
+                  alt={
+                    menu.logo.altText
+                      ? menu.logo.altText
+                      : 'Dr. Anderson Betioli Odontologia Avançada logo'
+                  }
                   width={menu.logo.width || 200}
                   height={menu.logo.height || 200}
                   className="overflow-hidden h-auto w-[200px]"

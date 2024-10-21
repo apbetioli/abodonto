@@ -10,6 +10,7 @@ query Page($slug: String!) {
       }
       video {
         url
+        altText
       }
     }
     cards {
@@ -25,6 +26,7 @@ query Page($slug: String!) {
         icon
         image {
           url
+          altText
         }
       }
     }

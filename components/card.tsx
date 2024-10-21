@@ -20,7 +20,7 @@ export default function CardComponent({ card }: { card: Card }) {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid gap-6 md:grid-cols-2 md:gap-12 items-center justify-items-center">
           <Image
-            alt="Procedimento de implante dentário"
+            alt={card.image.altText ? card.image.altText : 'foto de dentes'}
             className="rounded-xl w-full aspect-square object-cover"
             height="400"
             src={card.image.url}

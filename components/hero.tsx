@@ -8,6 +8,11 @@ export default function HeroComponent({ hero }: { hero: Hero }) {
       <video
         className="h-full w-full object-cover"
         src={hero.video.url}
+        aria-label={
+          hero.video.altText
+            ? hero.video.altText
+            : 'vídeo do Dr. Anderson Betioli'
+        }
         autoPlay
         loop
         muted
