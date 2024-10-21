@@ -1,6 +1,6 @@
 import { Hero } from '@/graphql/gql/graphql';
 import Link from 'next/link';
-import { Button } from './ui/button';
+import { Button } from './ui/Button';
 
 export default function HeroComponent({ hero }: { hero: Hero }) {
   return (

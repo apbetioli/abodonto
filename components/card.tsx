@@ -3,7 +3,7 @@ import LazyLoaderObserver from './ui/LazyLoadObserver';
 import Image from 'next/image';
 import Link from 'next/link';
 import { DrillIcon, Scissors, Smile, Sparkles } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from './ui/Button';
 
 export default function CardComponent({ card }: { card: Card }) {
   const icons = {
