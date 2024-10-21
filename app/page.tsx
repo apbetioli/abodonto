@@ -1,5 +1,5 @@
 import Hero from '@/components/hero';
-import { Card } from '@/graphql/gql/graphql';
+import { Card, Review } from '@/graphql/gql/graphql';
 import { Button } from '@/components/ui/button';
 import client from '@/graphql/client';
 import { Pagina } from '@/graphql/gql/graphql';
@@ -7,6 +7,7 @@ import pageQuery from '@/graphql/queries/page.graphql';
 import { Clock, Shield, Star } from 'lucide-react';
 import Link from 'next/link';
 import CardComponent from '@/components/card';
+import ReviewComponent from '@/components/Review';
 
 export default async function HomePage() {
   const { data } = await client.query<{ pagina: Pagina }>({
@@ -16,12 +17,13 @@ export default async function HomePage() {
     },
   });
 
-  const { hero, cards } = data.pagina;
+  const { hero, cards, reviews } = data.pagina;
 
   return (
     <main className="flex-1">
       {hero && <Hero hero={hero} />}
 
+      {/* servicos */}
       <section
         id="servicos"
         className="w-full py-12 md:py-24 lg:py-32 bg-black"
@@ -41,11 +43,13 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* image cards */}
       {cards &&
         cards.map((card: Card) => (
           <CardComponent key={card.title} card={card} />
         ))}
 
+      {/* sobre */}
       <section
         id="sobre"
         className="w-full py-12 md:py-24 lg:py-32 bg-black text-[#be955f]"
@@ -106,6 +110,7 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* reviews */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -119,36 +124,16 @@ export default async function HomePage() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
-            <div className="flex flex-col justify-center space-y-4">
-              <div className="space-y-2">
-                <p className="text-gray-500 italic">
-                  Sempre fiquei ansioso com consultas odontológicas, mas a
-                  equipe aqui me fez sentir muito confortável. A abordagem
-                  gentil e as técnicas modernas tornaram meu tratamento indolor!
-                </p>
-                <p className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
-                  - Sara Silva
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col justify-center space-y-4">
-              <div className="space-y-2">
-                <p className="text-gray-500 italic">
-                  A equipe é incrivelmente amigável e profissional. Eles
-                  explicaram cada etapa do meu tratamento e garantiram que eu
-                  estivesse confortável durante todo o processo. Não poderia
-                  estar mais feliz com meu novo sorriso!
-                </p>
-                <p className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
-                  - Miguel Santos
-                </p>
-              </div>
-            </div>
+          <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 lg:grid-cols-2 lg:gap-12">
+            {reviews &&
+              reviews.map((review: Review) => (
+                <ReviewComponent key={review.patientName} review={review} />
+              ))}
           </div>
         </div>
       </section>
 
+      {/* contact */}
       <section
         id="contato"
         className="w-full py-12 md:py-24 lg:py-32 bg-black text-[#be955f]"
