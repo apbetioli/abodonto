@@ -22,9 +22,9 @@ export default function CardComponent({ card }: { card: Card }) {
           <Image
             alt={card.image.altText ? card.image.altText : 'foto de dentes'}
             className="rounded-xl w-full aspect-square object-cover"
-            height="400"
+            height={400}
             src={card.image.url}
-            width="400"
+            width={400}
           />
           <LazyLoaderObserver>
             <div className="flex flex-col justify-center space-y-4">
