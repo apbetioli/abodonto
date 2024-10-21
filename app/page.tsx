@@ -64,7 +64,10 @@ export default async function HomePage() {
           </div>
           <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
             <div className="flex flex-col justify-center space-y-4">
-              <Shield className="mx-auto h-12 w-12 text-[#be955f]" />
+              <Shield
+                aria-hidden="true"
+                className="mx-auto h-12 w-12 text-[#be955f]"
+              />
               <h3 className="text-xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
                 Tecnologia Avançada
               </h3>
@@ -74,7 +77,10 @@ export default async function HomePage() {
               </p>
             </div>
             <div className="flex flex-col justify-center space-y-4">
-              <Clock className="mx-auto h-12 w-12 text-[#be955f]" />
+              <Clock
+                aria-hidden="true"
+                className="mx-auto h-12 w-12 text-[#be955f]"
+              />
               <h3 className="text-xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
                 Horários Convenientes
               </h3>
@@ -84,7 +90,10 @@ export default async function HomePage() {
               </p>
             </div>
             <div className="flex flex-col justify-center space-y-4">
-              <Star className="mx-auto h-12 w-12 text-[#be955f]" />
+              <Star
+                aria-hidden="true"
+                className="mx-auto h-12 w-12 text-[#be955f]"
+              />
               <h3 className="text-xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
                 Equipe Especializada
               </h3>

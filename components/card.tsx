@@ -31,7 +31,10 @@ export default function CardComponent({ card }: { card: Card }) {
               <div className="space-y-2">
                 <div className="flex items-center space-x-2">
                   {IconComponent && (
-                    <IconComponent className="w-6 h-6 text-[#be955f]" />
+                    <IconComponent
+                      aria-hidden="true"
+                      className="w-6 h-6 text-[#be955f]"
+                    />
                   )}
                   <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
                     {card.title}
