@@ -30,5 +30,11 @@ query Page($slug: String!) {
         }
       }
     }
+    reviews {
+      ... on Review {
+        patientName
+        text
+      }
+    }
   }
 }

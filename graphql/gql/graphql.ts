@@ -1792,6 +1792,7 @@ export enum EntityTypeName {
   Link = 'Link',
   Menu = 'Menu',
   Pagina = 'Pagina',
+  Review = 'Review',
   /** Scheduled Operation system model */
   ScheduledOperation = 'ScheduledOperation',
   /** Scheduled Release system model */
@@ -3867,6 +3868,7 @@ export type Pagina = Entity & Node & {
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   /** User that last published this document */
   publishedBy?: Maybe<User>;
+  reviews: Array<PaginareviewsUnion>;
   scheduledIn: Array<ScheduledOperation>;
   slug?: Maybe<Scalars['String']['output']>;
   /** System stage field */
@@ -3921,6 +3923,17 @@ export type PaginaPublishedByArgs = {
 };
 
 
+export type PaginaReviewsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
 export type PaginaScheduledInArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -3959,6 +3972,7 @@ export type PaginaCreateInput = {
   cards?: InputMaybe<PaginacardsUnionCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   hero?: InputMaybe<HeroCreateOneInlineInput>;
+  reviews?: InputMaybe<PaginareviewsUnionCreateManyInlineInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -4055,6 +4069,10 @@ export type PaginaManyWhereInput = {
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   publishedBy?: InputMaybe<UserWhereInput>;
+  /** All values in which the union is empty. */
+  reviews_empty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Matches if the modular component contains at least one connection to the item provided to the filter */
+  reviews_some?: InputMaybe<PaginareviewsUnionWhereInput>;
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
@@ -4111,6 +4129,7 @@ export enum PaginaOrderByInput {
 export type PaginaUpdateInput = {
   cards?: InputMaybe<PaginacardsUnionUpdateManyInlineInput>;
   hero?: InputMaybe<HeroUpdateOneInlineInput>;
+  reviews?: InputMaybe<PaginareviewsUnionUpdateManyInlineInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -4254,6 +4273,10 @@ export type PaginaWhereInput = {
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   publishedBy?: InputMaybe<UserWhereInput>;
+  /** All values in which the union is empty. */
+  reviews_empty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Matches if the modular component contains at least one connection to the item provided to the filter */
+  reviews_some?: InputMaybe<PaginareviewsUnionWhereInput>;
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
@@ -4390,6 +4413,84 @@ export type PaginacardsUnionWhereInput = {
 
 export type PaginacardsUnionWhereUniqueInput = {
   Card?: InputMaybe<CardWhereUniqueInput>;
+};
+
+export type PaginareviewsUnion = Review;
+
+export type PaginareviewsUnionConnectInput = {
+  Review?: InputMaybe<ReviewConnectInput>;
+};
+
+export type PaginareviewsUnionCreateInput = {
+  Review?: InputMaybe<ReviewCreateInput>;
+};
+
+export type PaginareviewsUnionCreateManyInlineInput = {
+  /** Create and connect multiple existing PaginareviewsUnion documents */
+  create?: InputMaybe<Array<PaginareviewsUnionCreateInput>>;
+};
+
+export type PaginareviewsUnionCreateOneInlineInput = {
+  /** Create and connect one PaginareviewsUnion document */
+  create?: InputMaybe<PaginareviewsUnionCreateInput>;
+};
+
+export type PaginareviewsUnionCreateWithPositionInput = {
+  Review?: InputMaybe<ReviewCreateWithPositionInput>;
+};
+
+export type PaginareviewsUnionUpdateInput = {
+  Review?: InputMaybe<ReviewUpdateInput>;
+};
+
+export type PaginareviewsUnionUpdateManyInlineInput = {
+  /** Create and connect multiple PaginareviewsUnion component instances */
+  create?: InputMaybe<Array<PaginareviewsUnionCreateWithPositionInput>>;
+  /** Delete multiple PaginareviewsUnion documents */
+  delete?: InputMaybe<Array<PaginareviewsUnionWhereUniqueInput>>;
+  /** Update multiple PaginareviewsUnion component instances */
+  update?: InputMaybe<Array<PaginareviewsUnionUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple PaginareviewsUnion component instances */
+  upsert?: InputMaybe<Array<PaginareviewsUnionUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type PaginareviewsUnionUpdateManyWithNestedWhereInput = {
+  Review?: InputMaybe<ReviewUpdateManyWithNestedWhereInput>;
+};
+
+export type PaginareviewsUnionUpdateOneInlineInput = {
+  /** Create and connect one PaginareviewsUnion document */
+  create?: InputMaybe<PaginareviewsUnionCreateInput>;
+  /** Delete currently connected PaginareviewsUnion document */
+  delete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Update single PaginareviewsUnion document */
+  update?: InputMaybe<PaginareviewsUnionUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single PaginareviewsUnion document */
+  upsert?: InputMaybe<PaginareviewsUnionUpsertWithNestedWhereUniqueInput>;
+};
+
+export type PaginareviewsUnionUpdateWithNestedWhereUniqueAndPositionInput = {
+  Review?: InputMaybe<ReviewUpdateWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type PaginareviewsUnionUpdateWithNestedWhereUniqueInput = {
+  Review?: InputMaybe<ReviewUpdateWithNestedWhereUniqueInput>;
+};
+
+export type PaginareviewsUnionUpsertWithNestedWhereUniqueAndPositionInput = {
+  Review?: InputMaybe<ReviewUpsertWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type PaginareviewsUnionUpsertWithNestedWhereUniqueInput = {
+  Review?: InputMaybe<ReviewUpsertWithNestedWhereUniqueInput>;
+};
+
+export type PaginareviewsUnionWhereInput = {
+  Review?: InputMaybe<ReviewWhereInput>;
+};
+
+export type PaginareviewsUnionWhereUniqueInput = {
+  Review?: InputMaybe<ReviewWhereUniqueInput>;
 };
 
 export type PublishLocaleInput = {
@@ -4736,6 +4837,374 @@ export type RgbaInput = {
   b: Scalars['RGBAHue']['input'];
   g: Scalars['RGBAHue']['input'];
   r: Scalars['RGBAHue']['input'];
+};
+
+export type Review = Entity & {
+  __typename?: 'Review';
+  /** The unique identifier */
+  id: Scalars['ID']['output'];
+  patientName: Scalars['String']['output'];
+  /** System stage field */
+  stage: Stage;
+  text: Scalars['String']['output'];
+};
+
+export type ReviewConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: ReviewWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type ReviewConnection = {
+  __typename?: 'ReviewConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<ReviewEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type ReviewCreateInput = {
+  patientName: Scalars['String']['input'];
+  text: Scalars['String']['input'];
+};
+
+export type ReviewCreateManyInlineInput = {
+  /** Create and connect multiple existing Review documents */
+  create?: InputMaybe<Array<ReviewCreateInput>>;
+};
+
+export type ReviewCreateOneInlineInput = {
+  /** Create and connect one Review document */
+  create?: InputMaybe<ReviewCreateInput>;
+};
+
+export type ReviewCreateWithPositionInput = {
+  /** Document to create */
+  data: ReviewCreateInput;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+};
+
+/** An edge in a connection. */
+export type ReviewEdge = {
+  __typename?: 'ReviewEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']['output'];
+  /** The item at the end of the edge. */
+  node: Review;
+};
+
+/** Identifies documents */
+export type ReviewManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ReviewWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ReviewWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ReviewWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  patientName?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  patientName_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  patientName_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  patientName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  patientName_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  patientName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  patientName_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  patientName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  patientName_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  patientName_starts_with?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  text_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  text_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  text_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  text_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  text_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  text_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  text_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  text_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  text_starts_with?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum ReviewOrderByInput {
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PatientNameAsc = 'patientName_ASC',
+  PatientNameDesc = 'patientName_DESC',
+  TextAsc = 'text_ASC',
+  TextDesc = 'text_DESC'
+}
+
+export type ReviewParent = Pagina;
+
+export type ReviewParentConnectInput = {
+  Pagina?: InputMaybe<PaginaConnectInput>;
+};
+
+export type ReviewParentCreateInput = {
+  Pagina?: InputMaybe<PaginaCreateInput>;
+};
+
+export type ReviewParentCreateManyInlineInput = {
+  /** Connect multiple existing ReviewParent documents */
+  connect?: InputMaybe<Array<ReviewParentWhereUniqueInput>>;
+  /** Create and connect multiple existing ReviewParent documents */
+  create?: InputMaybe<Array<ReviewParentCreateInput>>;
+};
+
+export type ReviewParentCreateOneInlineInput = {
+  /** Connect one existing ReviewParent document */
+  connect?: InputMaybe<ReviewParentWhereUniqueInput>;
+  /** Create and connect one ReviewParent document */
+  create?: InputMaybe<ReviewParentCreateInput>;
+};
+
+export type ReviewParentUpdateInput = {
+  Pagina?: InputMaybe<PaginaUpdateInput>;
+};
+
+export type ReviewParentUpdateManyInlineInput = {
+  /** Connect multiple existing ReviewParent documents */
+  connect?: InputMaybe<Array<ReviewParentConnectInput>>;
+  /** Create and connect multiple ReviewParent documents */
+  create?: InputMaybe<Array<ReviewParentCreateInput>>;
+  /** Delete multiple ReviewParent documents */
+  delete?: InputMaybe<Array<ReviewParentWhereUniqueInput>>;
+  /** Disconnect multiple ReviewParent documents */
+  disconnect?: InputMaybe<Array<ReviewParentWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing ReviewParent documents */
+  set?: InputMaybe<Array<ReviewParentWhereUniqueInput>>;
+  /** Update multiple ReviewParent documents */
+  update?: InputMaybe<Array<ReviewParentUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple ReviewParent documents */
+  upsert?: InputMaybe<Array<ReviewParentUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type ReviewParentUpdateManyWithNestedWhereInput = {
+  Pagina?: InputMaybe<PaginaUpdateManyWithNestedWhereInput>;
+};
+
+export type ReviewParentUpdateOneInlineInput = {
+  /** Connect existing ReviewParent document */
+  connect?: InputMaybe<ReviewParentWhereUniqueInput>;
+  /** Create and connect one ReviewParent document */
+  create?: InputMaybe<ReviewParentCreateInput>;
+  /** Delete currently connected ReviewParent document */
+  delete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Disconnect currently connected ReviewParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Update single ReviewParent document */
+  update?: InputMaybe<ReviewParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single ReviewParent document */
+  upsert?: InputMaybe<ReviewParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ReviewParentUpdateWithNestedWhereUniqueInput = {
+  Pagina?: InputMaybe<PaginaUpdateWithNestedWhereUniqueInput>;
+};
+
+export type ReviewParentUpsertWithNestedWhereUniqueInput = {
+  Pagina?: InputMaybe<PaginaUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ReviewParentWhereInput = {
+  Pagina?: InputMaybe<PaginaWhereInput>;
+};
+
+export type ReviewParentWhereUniqueInput = {
+  Pagina?: InputMaybe<PaginaWhereUniqueInput>;
+};
+
+export type ReviewUpdateInput = {
+  patientName?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ReviewUpdateManyInlineInput = {
+  /** Create and connect multiple Review component instances */
+  create?: InputMaybe<Array<ReviewCreateWithPositionInput>>;
+  /** Delete multiple Review documents */
+  delete?: InputMaybe<Array<ReviewWhereUniqueInput>>;
+  /** Update multiple Review component instances */
+  update?: InputMaybe<Array<ReviewUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple Review component instances */
+  upsert?: InputMaybe<Array<ReviewUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type ReviewUpdateManyInput = {
+  patientName?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ReviewUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: ReviewUpdateManyInput;
+  /** Document search */
+  where: ReviewWhereInput;
+};
+
+export type ReviewUpdateOneInlineInput = {
+  /** Create and connect one Review document */
+  create?: InputMaybe<ReviewCreateInput>;
+  /** Delete currently connected Review document */
+  delete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Update single Review document */
+  update?: InputMaybe<ReviewUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Review document */
+  upsert?: InputMaybe<ReviewUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ReviewUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<ReviewUpdateInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: ReviewWhereUniqueInput;
+};
+
+export type ReviewUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: ReviewUpdateInput;
+  /** Unique document search */
+  where: ReviewWhereUniqueInput;
+};
+
+export type ReviewUpsertInput = {
+  /** Create document if it didn't exist */
+  create: ReviewCreateInput;
+  /** Update document if it exists */
+  update: ReviewUpdateInput;
+};
+
+export type ReviewUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<ReviewUpsertInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: ReviewWhereUniqueInput;
+};
+
+export type ReviewUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: ReviewUpsertInput;
+  /** Unique document search */
+  where: ReviewWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type ReviewWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ReviewWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ReviewWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ReviewWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  patientName?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  patientName_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  patientName_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  patientName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  patientName_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  patientName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  patientName_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  patientName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  patientName_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  patientName_starts_with?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  text_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  text_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  text_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  text_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  text_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  text_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  text_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  text_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  text_starts_with?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** References Review record uniquely */
+export type ReviewWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
 };
 
 /** Custom type representing a rich text value comprising of raw rich text ast, html, markdown and text values */
@@ -6972,7 +7441,7 @@ export type PageQueryVariables = Exact<{
 }>;
 
 
-export type PageQuery = { __typename?: 'Query', pagina?: { __typename?: 'Pagina', hero?: { __typename?: 'Hero', title: string, text?: string | null, buttons: Array<{ __typename?: 'Button', text: string, url: string, variant: ButtonVariant }>, video: { __typename?: 'Asset', url: string, altText?: string | null } } | null, cards: Array<{ __typename?: 'Card', listItems: Array<string>, text: string, title: string, icon: Icons, button?: { __typename?: 'Button', text: string, url: string, variant: ButtonVariant } | null, image: { __typename?: 'Asset', url: string, altText?: string | null } }> } | null };
+export type PageQuery = { __typename?: 'Query', pagina?: { __typename?: 'Pagina', hero?: { __typename?: 'Hero', title: string, text?: string | null, buttons: Array<{ __typename?: 'Button', text: string, url: string, variant: ButtonVariant }>, video: { __typename?: 'Asset', url: string, altText?: string | null } } | null, cards: Array<{ __typename?: 'Card', listItems: Array<string>, text: string, title: string, icon: Icons, button?: { __typename?: 'Button', text: string, url: string, variant: ButtonVariant } | null, image: { __typename?: 'Asset', url: string, altText?: string | null } }>, reviews: Array<{ __typename?: 'Review', patientName: string, text: string }> } | null };
 
 export type TextPageQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -6983,5 +7452,5 @@ export type TextPageQuery = { __typename?: 'Query', textPage?: { __typename?: 'T
 
 
 export const MenusDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Menus"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"menus"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"logo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}},{"kind":"Field","name":{"kind":"Name","value":"links"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"texto"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]} as unknown as DocumentNode<MenusQuery, MenusQueryVariables>;
-export const PageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Page"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pagina"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hero"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"buttons"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"variant"}}]}},{"kind":"Field","name":{"kind":"Name","value":"video"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"cards"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Card"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"button"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"variant"}}]}},{"kind":"Field","name":{"kind":"Name","value":"listItems"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"icon"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<PageQuery, PageQueryVariables>;
+export const PageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Page"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pagina"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hero"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"buttons"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"variant"}}]}},{"kind":"Field","name":{"kind":"Name","value":"video"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"cards"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Card"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"button"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"variant"}}]}},{"kind":"Field","name":{"kind":"Name","value":"listItems"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"icon"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"reviews"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Review"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"patientName"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}}]}}]}}]}}]} as unknown as DocumentNode<PageQuery, PageQueryVariables>;
 export const TextPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TextPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"textPage"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"text"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}}]}}]} as unknown as DocumentNode<TextPageQuery, TextPageQueryVariables>;
