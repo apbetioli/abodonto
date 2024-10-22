@@ -1,6 +1,6 @@
 import Hero from '@/components/Hero';
 import { Card, Review } from '@/graphql/gql/graphql';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import client from '@/graphql/client';
 import { Pagina } from '@/graphql/gql/graphql';
 import pageQuery from '@/graphql/queries/page.graphql';
