@@ -3,6 +3,13 @@ import { Menu } from '@/graphql/gql/graphql';
 import menuQuery from '@/graphql/queries/menu.graphql';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { MenuIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import './globals.css';
@@ -40,7 +47,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="flex min-h-[100dvh] flex-col bg-white text-black">
-          <header className="fixed left-0 right-0 top-0 z-50 flex h-14 items-center bg-white bg-opacity-90 px-4 lg:px-6">
+          <header className="fixed left-0 right-0 top-0 z-50 flex h-14 items-center justify-between space-x-4 bg-white bg-opacity-90 px-4 lg:px-6">
             <Link className="flex items-center justify-center" href="/">
               {menu.logo && (
                 <Image
@@ -57,7 +64,10 @@ export default async function RootLayout({
                 />
               )}
             </Link>
-            <nav className="ml-auto hidden gap-4 sm:flex sm:gap-6">
+            <nav
+              aria-label="Main Navigation"
+              className="ml-auto hidden gap-4 sm:gap-6 md:flex"
+            >
               {menu.links.map((link) => (
                 <Link
                   key={link.texto}
@@ -67,6 +77,22 @@ export default async function RootLayout({
                   {link.texto}
                 </Link>
               ))}
+            </nav>
+            <nav aria-label="Main Navigation" className="block md:hidden">
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <MenuIcon />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-white">
+                  <DropdownMenuItem>
+                    {menu.links.map((link) => (
+                      <Link key={link.texto} href={link.url}>
+                        {link.texto}
+                      </Link>
+                    ))}
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </nav>
           </header>
 
