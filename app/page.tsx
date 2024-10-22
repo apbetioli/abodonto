@@ -26,12 +26,12 @@ export default async function HomePage() {
       {/* servicos */}
       <section
         id="servicos"
-        className="w-full py-12 md:py-24 lg:py-32 bg-black"
+        className="w-full bg-black py-12 md:py-24 lg:py-32"
       >
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
+              <h2 className="bg-gradient-to-r from-[#be955f] to-[#e2c08d] bg-clip-text text-3xl font-bold tracking-tighter text-transparent sm:text-5xl">
                 Nossos Serviços
               </h2>
               <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -52,12 +52,12 @@ export default async function HomePage() {
       {/* sobre */}
       <section
         id="sobre"
-        className="w-full py-12 md:py-24 lg:py-32 bg-black text-[#be955f]"
+        className="w-full bg-black py-12 text-[#be955f] md:py-24 lg:py-32"
       >
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
+              <h2 className="bg-gradient-to-r from-[#be955f] to-[#e2c08d] bg-clip-text text-3xl font-bold tracking-tighter text-transparent sm:text-5xl">
                 Por Que Nos Escolher?
               </h2>
               <p className="max-w-[900px] text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -72,10 +72,10 @@ export default async function HomePage() {
                 aria-hidden="true"
                 className="mx-auto h-12 w-12 text-[#be955f]"
               />
-              <h3 className="text-xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
+              <h3 className="bg-gradient-to-r from-[#be955f] to-[#e2c08d] bg-clip-text text-center text-xl font-bold text-transparent">
                 Tecnologia Avançada
               </h3>
-              <p className="text-sm text-center text-gray-400">
+              <p className="text-center text-sm text-gray-400">
                 Equipamentos de última geração para diagnósticos precisos e
                 tratamentos confortáveis.
               </p>
@@ -85,10 +85,10 @@ export default async function HomePage() {
                 aria-hidden="true"
                 className="mx-auto h-12 w-12 text-[#be955f]"
               />
-              <h3 className="text-xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
+              <h3 className="bg-gradient-to-r from-[#be955f] to-[#e2c08d] bg-clip-text text-center text-xl font-bold text-transparent">
                 Horários Convenientes
               </h3>
-              <p className="text-sm text-center text-gray-400">
+              <p className="text-center text-sm text-gray-400">
                 Agendamento flexível para se adequar ao seu estilo de vida
                 agitado, incluindo consultas noturnas e aos fins de semana.
               </p>
@@ -98,10 +98,10 @@ export default async function HomePage() {
                 aria-hidden="true"
                 className="mx-auto h-12 w-12 text-[#be955f]"
               />
-              <h3 className="text-xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
+              <h3 className="bg-gradient-to-r from-[#be955f] to-[#e2c08d] bg-clip-text text-center text-xl font-bold text-transparent">
                 Equipe Especializada
               </h3>
-              <p className="text-sm text-center text-gray-400">
+              <p className="text-center text-sm text-gray-400">
                 Profissionais altamente qualificados e experientes dedicados à
                 sua saúde bucal.
               </p>
@@ -111,11 +111,11 @@ export default async function HomePage() {
       </section>
 
       {/* reviews */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
+      <section className="w-full bg-white py-12 md:py-24 lg:py-32">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
+              <h2 className="bg-gradient-to-r from-[#be955f] to-[#e2c08d] bg-clip-text text-3xl font-bold tracking-tighter text-transparent sm:text-5xl">
                 O Que Nossos Pacientes Dizem
               </h2>
               <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -136,11 +136,11 @@ export default async function HomePage() {
       {/* contact */}
       <section
         id="contato"
-        className="w-full py-12 md:py-24 lg:py-32 bg-black text-[#be955f]"
+        className="w-full bg-black py-12 text-[#be955f] md:py-24 lg:py-32"
       >
         <div className="container mx-auto grid items-center justify-center gap-4 px-4 text-center md:px-6">
           <div className="space-y-3">
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
+            <h2 className="bg-gradient-to-r from-[#be955f] to-[#e2c08d] bg-clip-text text-3xl font-bold tracking-tighter text-transparent md:text-4xl/tight">
               Pronto para o Seu Melhor Sorriso?
             </h2>
             <p className="mx-auto max-w-[600px] text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -152,7 +152,7 @@ export default async function HomePage() {
             href="https://wa.me/5544997381613?text=Olá, gostaria de agendar uma consulta"
             className="flex justify-center"
           >
-            <Button className="w-full sm:w-fit max-w-sm" type="submit">
+            <Button className="w-full max-w-sm sm:w-fit" type="submit">
               Agendar consulta
             </Button>
           </Link>

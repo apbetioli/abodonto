@@ -39,8 +39,8 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex flex-col min-h-[100dvh] bg-white text-black">
-          <header className="fixed top-0 left-0 right-0 z-50 px-4 lg:px-6 h-14 flex items-center bg-white bg-opacity-90">
+        <div className="flex min-h-[100dvh] flex-col bg-white text-black">
+          <header className="fixed left-0 right-0 top-0 z-50 flex h-14 items-center bg-white bg-opacity-90 px-4 lg:px-6">
             <Link className="flex items-center justify-center" href="/">
               {menu.logo && (
                 <Image
@@ -52,16 +52,16 @@ export default async function RootLayout({
                   }
                   width={menu.logo.width || 200}
                   height={menu.logo.height || 200}
-                  className="overflow-hidden h-auto w-[200px]"
+                  className="h-auto w-[200px] overflow-hidden"
                   priority={true}
                 />
               )}
             </Link>
-            <nav className="ml-auto gap-4 sm:gap-6 hidden sm:flex">
+            <nav className="ml-auto hidden gap-4 sm:flex sm:gap-6">
               {menu.links.map((link) => (
                 <Link
                   key={link.texto}
-                  className="text-sm font-medium hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-[#be955f] to-[#e2c08d] transition-colors duration-300"
+                  className="from-[#be955f] to-[#e2c08d] text-sm font-medium transition-colors duration-300 hover:bg-gradient-to-r hover:bg-clip-text hover:text-transparent"
                   href={link.url}
                 >
                   {link.texto}
@@ -72,20 +72,20 @@ export default async function RootLayout({
 
           {children}
 
-          <footer className="flex flex-col text-sm gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6">
+          <footer className="flex w-full shrink-0 flex-col items-center gap-2 px-4 py-6 text-sm sm:flex-row md:px-6">
             <p className="text-gray-500">
               © 2024 Anderson Betioli Odontologia Avançada. Todos os direitos
               reservados.
             </p>
-            <nav className="sm:ml-auto flex gap-4 sm:gap-6">
+            <nav className="flex gap-4 sm:ml-auto sm:gap-6">
               <Link
-                className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-[#be955f] to-[#e2c08d] transition-colors duration-300"
+                className="from-[#be955f] to-[#e2c08d] transition-colors duration-300 hover:bg-gradient-to-r hover:bg-clip-text hover:text-transparent"
                 href="/terms"
               >
                 Termos de Serviço
               </Link>
               <Link
-                className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-[#be955f] to-[#e2c08d] transition-colors duration-300"
+                className="from-[#be955f] to-[#e2c08d] transition-colors duration-300 hover:bg-gradient-to-r hover:bg-clip-text hover:text-transparent"
                 href="/privacy"
               >
                 Privacidade

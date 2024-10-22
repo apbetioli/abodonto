@@ -9,7 +9,7 @@ export default async function Page() {
   });
 
   return (
-    <div className="w-full mx-auto pt-12 md:pt-24 lg:pt-32 prose">
+    <div className="prose mx-auto w-full pt-12 md:pt-24 lg:pt-32">
       <div
         dangerouslySetInnerHTML={{ __html: data.textPage?.text.html || '' }}
       />

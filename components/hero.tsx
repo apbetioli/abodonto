@@ -5,9 +5,9 @@ import Image from 'next/image';
 
 export default function HeroComponent({ hero }: { hero: Hero }) {
   return (
-    <section className="relative w-full h-screen flex items-end justify-center text-white">
+    <section className="relative flex h-screen w-full items-end justify-center text-white">
       <video
-        className="hidden sm:block h-full w-full object-cover"
+        className="hidden h-full w-full object-cover sm:block"
         src={hero.video.url}
         aria-label={
           hero.video.altText
@@ -19,21 +19,21 @@ export default function HeroComponent({ hero }: { hero: Hero }) {
         muted
       ></video>
       <Image
-        className="block sm:hidden h-full w-full pt-14 object-cover"
+        className="block h-full w-full object-cover pt-14 sm:hidden"
         src={'/ander.jpg'}
         alt={'Dr. Anderson Betioli smiling'}
         width={1440}
         height={1590}
       />
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black via-gray-50/5"></div>
-      <div className="absolute flex flex-col justify-center space-y-4 items-center text-center pb-12 xl:pb-32 px-4 md:px-6">
+      <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-t from-black via-gray-50/5"></div>
+      <div className="absolute flex flex-col items-center justify-center space-y-4 px-4 pb-12 text-center md:px-6 xl:pb-32">
         <div className="space-y-2 text-center">
           <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
             {hero.title}
           </h1>
           <p className="max-w-[600px] md:text-xl">{hero.text}</p>
         </div>
-        <div className="w-full flex flex-col justify-center gap-2 min-[400px] sm:flex-row ">
+        <div className="min-[400px] flex w-full flex-col justify-center gap-2 sm:flex-row">
           {hero.buttons.map(
             (button: {
               text: string;
@@ -42,7 +42,7 @@ export default function HeroComponent({ hero }: { hero: Hero }) {
             }) => (
               <Link href={button.url} key={button.text}>
                 <Button
-                  className="w-full sm:w-fit max-w-sm"
+                  className="w-full max-w-sm sm:w-fit"
                   variant={button.variant}
                 >
                   {button.text}

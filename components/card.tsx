@@ -16,12 +16,12 @@ export default function CardComponent({ card }: { card: Card }) {
   const IconComponent = icons[card.icon as Icons];
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 text-[#be955f]">
+    <section className="w-full py-12 text-[#be955f] md:py-24 lg:py-32">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid gap-6 md:grid-cols-2 md:gap-12 items-center justify-items-center">
+        <div className="grid items-center justify-items-center gap-6 md:grid-cols-2 md:gap-12">
           <Image
             alt={card.image.altText ? card.image.altText : 'foto de dentes'}
-            className="rounded-xl w-full aspect-square object-cover"
+            className="aspect-square w-full rounded-xl object-cover"
             height={400}
             src={card.image.url}
             width={400}
@@ -33,16 +33,16 @@ export default function CardComponent({ card }: { card: Card }) {
                   {IconComponent && (
                     <IconComponent
                       aria-hidden="true"
-                      className="w-6 h-6 text-[#be955f]"
+                      className="h-6 w-6 text-[#be955f]"
                     />
                   )}
-                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#be955f] to-[#e2c08d]">
+                  <h3 className="bg-gradient-to-r from-[#be955f] to-[#e2c08d] bg-clip-text text-2xl font-bold text-transparent">
                     {card.title}
                   </h3>
                 </div>
                 <p className="text-gray-400">{card.text}</p>
               </div>
-              <ul className="space-y-2 text-gray-400 list-disc pl-4">
+              <ul className="list-disc space-y-2 pl-4 text-gray-400">
                 {card.listItems.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -53,7 +53,7 @@ export default function CardComponent({ card }: { card: Card }) {
               >
                 {card.button && (
                   <Button
-                    className="w-full sm:w-fit max-w-sm"
+                    className="w-full max-w-sm sm:w-fit"
                     variant={card.button.variant}
                   >
                     {card.button.text}
