@@ -3,16 +3,10 @@ import { Menu } from '@/graphql/gql/graphql';
 import menuQuery from '@/graphql/queries/menu.graphql';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { MenuIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import './globals.css';
+import DropdownMenuCustom from '@/components/DropdownMenuCustom';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -79,20 +73,7 @@ export default async function RootLayout({
               ))}
             </nav>
             <nav aria-label="Main Navigation" className="block md:hidden">
-              <DropdownMenu>
-                <DropdownMenuTrigger>
-                  <MenuIcon />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-white">
-                  <DropdownMenuItem>
-                    {menu.links.map((link) => (
-                      <Link key={link.texto} href={link.url}>
-                        {link.texto}
-                      </Link>
-                    ))}
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <DropdownMenuCustom menuItems={menu.links} />
             </nav>
           </header>
 
