@@ -181,6 +181,30 @@ const DropdownMenuShortcut = ({
 };
 DropdownMenuShortcut.displayName = 'DropdownMenuShortcut';
 
+// const CustomDropdownMenu = ({ menuItems }) => {
+//   const [isOpen, setIsOpen] = useState(false);
+//   console.log('menuItems: ', menuItems);
+//   const toggleMenu = () => {
+//     setIsOpen((prev) => !prev);
+//   };
+//   return (
+//     <DropdownMenu>
+//       <DropdownMenuTrigger onClick={toggleMenu}>
+//         <MenuIcon className={`${isOpen ? 'text-[#d1a970]' : ''}`} />
+//       </DropdownMenuTrigger>
+//       <DropdownMenuContent className="bg-white">
+//         <DropdownMenuItem>
+//           {menuItems.map((item) => (
+//             <Link key={item.texto} href={item.url}>
+//               {item.texto}
+//             </Link>
+//           ))}
+//         </DropdownMenuItem>
+//       </DropdownMenuContent>
+//     </DropdownMenu>
+//   );
+// };
+
 export {
   DropdownMenu,
   DropdownMenuTrigger,
