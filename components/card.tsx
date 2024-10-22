@@ -1,5 +1,5 @@
 import { Card, Icons } from '@/graphql/gql/graphql';
-import LazyLoaderObserver from './ui/LazyLoadObserver';
+import LazyLoaderObserver from './LazyLoadObserver';
 import Image from 'next/image';
 import Link from 'next/link';
 import { DrillIcon, Scissors, Smile, Sparkles } from 'lucide-react';
