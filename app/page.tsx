@@ -5,7 +5,7 @@ import { Pagina } from '@/graphql/gql/graphql';
 import pageQuery from '@/graphql/queries/page.graphql';
 import { Clock, Shield, Star } from 'lucide-react';
 import Link from 'next/link';
-
+import Hero from '@/components/Hero';
 import ReviewComponent from '@/components/Review';
 import CardComponent from '@/components/CardComponent';
 
