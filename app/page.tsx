@@ -6,8 +6,8 @@ import pageQuery from '@/graphql/queries/page.graphql';
 import { Clock, Shield, Star } from 'lucide-react';
 import Link from 'next/link';
 import Hero from '@/components/Hero';
-import CardComponent from '@/components/Card';
 import ReviewComponent from '@/components/Review';
+import CardComponent from '@/components/CardComponent';
 
 export default async function HomePage() {
   const { data } = await client.query<{ pagina: Pagina }>({
