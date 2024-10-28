@@ -1,13 +1,13 @@
 'use client';
 
+import { MenuIcon } from 'lucide-react';
+import Link from 'next/link';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@radix-ui/react-dropdown-menu';
-import { MenuIcon } from 'lucide-react';
-import Link from 'next/link';
+} from './ui/dropdown-menu';
 
 type MenuItem = {
   texto: string;
