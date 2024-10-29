@@ -14,9 +14,11 @@ type MenuItem = {
   url: string;
 };
 
-const DropdownMenuCustom: React.FC<{ menuItems: MenuItem[] }> = ({
-  menuItems,
-}) => {
+type MenuItems = {
+  menuItems: MenuItem[];
+};
+
+const DropdownMenuCustom = ({ menuItems }: MenuItems) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="data-[state=open]:text-[#d1a970]">
