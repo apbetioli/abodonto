@@ -21,11 +21,13 @@ export async function POST(request: Request) {
       }
     }
 
-    console.log('[Next.js] Revalidating');
-
-    revalidatePath('/');
-    revalidatePath('/termos-de-uso');
-    revalidatePath('/politica-de-privacidade');
+    const object = JSON.parse(body);
+    console.log('[Next.js] Revalidating /', object.data.slug);
+    if (object.data.slug === 'home') {
+      revalidatePath('/');
+    } else {
+      revalidatePath(`/${object.data.slug}`);
+    }
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     return new Response(`Webhook error: ${message}`, {
