@@ -21,8 +21,11 @@ export async function POST(request: Request) {
       }
     }
 
-    console.log('[Next.js] Revalidating /');
+    console.log('[Next.js] Revalidating');
+
     revalidatePath('/');
+    revalidatePath('/termos-de-uso');
+    revalidatePath('/politica-de-privacidade');
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     return new Response(`Webhook error: ${message}`, {
