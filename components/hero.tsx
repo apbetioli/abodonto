@@ -1,9 +1,9 @@
-import { Hero } from '@/graphql/gql/graphql';
+import type { Hero as HeroType } from '@/graphql/gql/graphql';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from './ui/button';
-import Image from 'next/image';
 
-export default function HeroComponent({ hero }: { hero: Hero }) {
+export default function Hero({ hero }: { hero: HeroType }) {
   return (
     <section className="relative flex h-screen w-full items-end justify-center text-white">
       <video

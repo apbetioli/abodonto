@@ -1,6 +1,6 @@
-import { Review } from '@/graphql/gql/graphql';
+import { Review as ReviewType } from '@/graphql/gql/graphql';
 
-export default function ReviewComponent({ review }: { review: Review }) {
+export default function Review({ review }: { review: ReviewType }) {
   return (
     <div className="flex flex-col justify-center space-y-4">
       <div className="space-y-2">

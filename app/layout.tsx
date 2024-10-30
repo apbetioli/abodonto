@@ -1,12 +1,8 @@
-import client from '@/graphql/client';
-import { Menu } from '@/graphql/gql/graphql';
-import menuQuery from '@/graphql/queries/menu.graphql';
+import Footer from '@/components/footer';
+import Header from '@/components/header';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import Image from 'next/image';
-import Link from 'next/link';
 import './globals.css';
-import DropdownMenuCustom from '@/components/DropdownMenuCustom';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -30,75 +26,17 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { data } = await client.query<{ menus: Menu[] }>({
-    query: menuQuery,
-  });
-  const menu = data.menus[0];
-
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="flex min-h-[100dvh] flex-col bg-white text-black">
-          <header className="fixed left-0 right-0 top-0 z-50 flex h-14 items-center justify-between space-x-4 bg-white bg-opacity-90 px-4 lg:px-6">
-            <Link className="flex items-center justify-center" href="/">
-              {menu.logo && (
-                <Image
-                  src={menu.logo.url || '/logo2.jpg'}
-                  alt={
-                    menu.logo.altText
-                      ? menu.logo.altText
-                      : 'Dr. Anderson Betioli Odontologia Avançada logo'
-                  }
-                  width={menu.logo.width || 200}
-                  height={menu.logo.height || 200}
-                  className="h-auto w-[200px] overflow-hidden"
-                  priority={true}
-                />
-              )}
-            </Link>
-            <nav
-              aria-label="Main Navigation"
-              className="ml-auto hidden gap-4 sm:gap-6 md:flex"
-            >
-              {menu.links.map((link) => (
-                <Link
-                  key={link.texto}
-                  className="from-[#be955f] to-[#e2c08d] text-sm font-medium transition-colors duration-300 hover:bg-gradient-to-r hover:bg-clip-text hover:text-transparent"
-                  href={link.url}
-                >
-                  {link.texto}
-                </Link>
-              ))}
-            </nav>
-            <nav aria-label="Main Navigation" className="block md:hidden">
-              <DropdownMenuCustom menuItems={menu.links} />
-            </nav>
-          </header>
+          <Header />
 
           {children}
 
-          <footer className="flex w-full shrink-0 flex-col items-center gap-2 px-4 py-6 text-sm sm:flex-row md:px-6">
-            <p className="text-gray-500">
-              © 2024 Anderson Betioli Odontologia Avançada. Todos os direitos
-              reservados.
-            </p>
-            <nav className="flex gap-4 sm:ml-auto sm:gap-6">
-              <Link
-                className="from-[#be955f] to-[#e2c08d] transition-colors duration-300 hover:bg-gradient-to-r hover:bg-clip-text hover:text-transparent"
-                href="/termos-de-uso"
-              >
-                Termos de Serviço
-              </Link>
-              <Link
-                className="from-[#be955f] to-[#e2c08d] transition-colors duration-300 hover:bg-gradient-to-r hover:bg-clip-text hover:text-transparent"
-                href="/politica-de-privacidade"
-              >
-                Privacidade
-              </Link>
-            </nav>
-          </footer>
+          <Footer title={metadata.title as string} />
         </div>
       </body>
     </html>

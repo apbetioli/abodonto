@@ -1,11 +1,11 @@
-import { Card, Icons } from '@/graphql/gql/graphql';
-import LazyLoaderObserver from './LazyLoadObserver';
+import { Card as CardType, Icons } from '@/graphql/gql/graphql';
+import { DrillIcon, Scissors, Smile, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { DrillIcon, Scissors, Smile, Sparkles } from 'lucide-react';
+import LazyLoaderObserver from './ui/lazy-load-observer';
 import { Button } from './ui/button';
 
-export default function CardComponent({ card }: { card: Card }) {
+export default function Card({ card }: { card: CardType }) {
   const icons = {
     [Icons.DrillIcon]: DrillIcon,
     [Icons.Scissors]: Scissors,
