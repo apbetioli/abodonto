@@ -87,13 +87,13 @@ export default async function RootLayout({
             <nav className="flex gap-4 sm:ml-auto sm:gap-6">
               <Link
                 className="from-[#be955f] to-[#e2c08d] transition-colors duration-300 hover:bg-gradient-to-r hover:bg-clip-text hover:text-transparent"
-                href="/terms"
+                href="/termos-de-uso"
               >
                 Termos de Serviço
               </Link>
               <Link
                 className="from-[#be955f] to-[#e2c08d] transition-colors duration-300 hover:bg-gradient-to-r hover:bg-clip-text hover:text-transparent"
-                href="/privacy"
+                href="/politica-de-privacidade"
               >
                 Privacidade
               </Link>
